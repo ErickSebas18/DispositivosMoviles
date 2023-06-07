@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id= "@+id/inicio"
+        android:enabled="true"
+        android:title="@string/nombre_menu_Inicio"
+        android:icon="@drawable/home_48px"
+        android:visible="true"
+        />
+    <item
+        android:id= "@+id/favoritos"
+        android:enabled="true"
+        android:title="@string/nombre_menu_Favoritos"
+        android:visible="true"
+        android:icon="@drawable/favorite_48px"/>
+    <item
+        android:id= "@+id/app"
+        android:enabled="true"
+        android:title="@string/nombre_menu_Apps"
+        android:visible="true"
+        android:icon="@drawable/apps_48px"/>
+</menu>

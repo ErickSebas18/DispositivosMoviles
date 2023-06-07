@@ -5,4 +5,7 @@
     <string name="ingreso_boton">Ingresar</string>
     <string name="mensaje_redes">O conéctese usando las redes sociales</string>
     <string name="mensaje_olvido_contrasenia">¿Olvido su contraseha?</string>
+    <string name="nombre_menu_Inicio">Inicio</string>
+    <string name="nombre_menu_Favoritos">Favoritos</string>
+    <string name="nombre_menu_Apps">App</string>
 </resources>

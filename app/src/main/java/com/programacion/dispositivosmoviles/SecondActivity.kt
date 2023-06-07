@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.programacion.dispositivosmoviles.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
@@ -36,5 +37,27 @@ class SecondActivity : AppCompatActivity() {
             )
             startActivity(intent)
         }
+
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.inicio -> {
+                    Snackbar.make(binding.txtWelcome, "Entramos a Inicio", Snackbar.LENGTH_LONG)
+                        .setTextColor(getColor(R.color.red))
+                        .show()
+                    true
+                }
+
+                R.id.favoritos -> {
+                    true
+                }
+
+                R.id.app -> {
+                    true
+                }
+
+                else -> false
+            }
+        }
+
     }
 }
