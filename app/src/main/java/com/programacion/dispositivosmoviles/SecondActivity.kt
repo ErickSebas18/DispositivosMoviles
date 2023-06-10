@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.programacion.dispositivosmoviles.databinding.ActivitySecondBinding
+import com.programacion.dispositivosmoviles.fragments.FirstFragment
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
@@ -41,9 +42,11 @@ class SecondActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.inicio -> {
-                    Snackbar.make(binding.txtWelcome, "Entramos a Inicio", Snackbar.LENGTH_LONG)
-                        .setTextColor(getColor(R.color.red))
-                        .show()
+                    val newFragment = FirstFragment()
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.add(binding.container.id, newFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
                     true
                 }
 

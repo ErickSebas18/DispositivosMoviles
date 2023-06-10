@@ -8,4 +8,6 @@
     <string name="nombre_menu_Inicio">Inicio</string>
     <string name="nombre_menu_Favoritos">Favoritos</string>
     <string name="nombre_menu_Apps">App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
