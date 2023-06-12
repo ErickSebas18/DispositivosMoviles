@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.programacion.dispositivosmoviles.databinding.ActivitySecondBinding
 import com.programacion.dispositivosmoviles.fragments.FirstFragment
+import com.programacion.dispositivosmoviles.fragments.SecondFragment
+import com.programacion.dispositivosmoviles.fragments.ThirdFragment
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
@@ -51,10 +53,20 @@ class SecondActivity : AppCompatActivity() {
                 }
 
                 R.id.favoritos -> {
+                    val newFragment = SecondFragment()
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.add(binding.container.id, newFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
                     true
                 }
 
                 R.id.app -> {
+                    val newFragment = ThirdFragment()
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.add(binding.container.id, newFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
                     true
                 }
 
