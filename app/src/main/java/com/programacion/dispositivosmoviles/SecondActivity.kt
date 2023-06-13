@@ -9,6 +9,7 @@ import com.programacion.dispositivosmoviles.databinding.ActivitySecondBinding
 import com.programacion.dispositivosmoviles.fragments.FirstFragment
 import com.programacion.dispositivosmoviles.fragments.SecondFragment
 import com.programacion.dispositivosmoviles.fragments.ThirdFragment
+import com.programacion.dispositivosmoviles.utilities.FragmentsManager
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
@@ -30,25 +31,22 @@ class SecondActivity : AppCompatActivity() {
         Log.d("UCE", "Hola ${name}")
         binding.txtWelcome.text = "Bienvenido " + name
         initClass()
+
+        FragmentsManager().add(supportFragmentManager,binding.container.id,FirstFragment())
     }
 
     private fun initClass() {
-        binding.button4.setOnClickListener {
-            var intent = Intent(
-                this,
-                MainActivity::class.java
-            )
-            startActivity(intent)
-        }
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.inicio -> {
-                    val newFragment = FirstFragment()
+
+
+                    /* val newFragment = FirstFragment()
                     val transaction = supportFragmentManager.beginTransaction()
                     transaction.add(binding.container.id, newFragment)
                     transaction.addToBackStack(null)
-                    transaction.commit()
+                    transaction.commit*/
                     true
                 }
 
@@ -74,5 +72,9 @@ class SecondActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

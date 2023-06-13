@@ -37,7 +37,7 @@
             android:text="Mis Apps"
             android:fontFamily="@font/audiowide"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="40dp"
             android:textColor="@color/black"
             android:textStyle="italic"/>
     </androidx.cardview.widget.CardView>
