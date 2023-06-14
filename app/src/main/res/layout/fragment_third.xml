@@ -8,6 +8,7 @@
     tools:context=".fragments.ThirdFragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="350dp"
         android:layout_height="290dp"
         android:background="#6CA815"
@@ -41,5 +42,24 @@
             android:textColor="@color/black"
             android:textStyle="italic"/>
     </androidx.cardview.widget.CardView>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <ListView
+        android:id = "@+id/listView"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_margin = "25dp"
+        app:layout_constraintEnd_toEndOf = "parent"
+        app:layout_constraintStart_toStartOf = "parent"
+        app:layout_constraintTop_toBottomOf = "@+id/spinner"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

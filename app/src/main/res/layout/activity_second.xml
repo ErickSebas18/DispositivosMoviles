@@ -21,12 +21,12 @@
 
     <FrameLayout
         android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:layout_marginBottom="292dp"
+        android:layout_width="410dp"
+        android:layout_height="580dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
