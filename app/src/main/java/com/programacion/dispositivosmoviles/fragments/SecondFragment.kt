@@ -7,8 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.programacion.dispositivosmoviles.R
+import com.programacion.dispositivosmoviles.adapters.MarvelAdapters
+import com.programacion.dispositivosmoviles.data.entities.Superheroes
 import com.programacion.dispositivosmoviles.databinding.FragmentSecondBinding
+import com.programacion.dispositivosmoviles.logic.validator.Marvel
 
 class SecondFragment : Fragment() {
 
@@ -25,11 +31,12 @@ class SecondFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-         val opciones = arrayListOf<String>("Opcion1","Opcion2","Opcion3","Opcion4","Opcion5")
 
-        val adapter = ArrayAdapter<String>(requireActivity(), R.layout.simple_spinner, opciones)
+        val rvAdapter = MarvelAdapters(Marvel().returnMarvelChar())
 
-        binding.spinner.adapter = adapter
-        binding.listView.adapter = adapter
+        val rvMarvel = binding.rvMarvelChars
+
+        rvMarvel.adapter = rvAdapter
+        rvMarvel.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
     }
 }

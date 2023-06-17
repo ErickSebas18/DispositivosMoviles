@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.programacion.dispositivosmoviles.R
 import com.programacion.dispositivosmoviles.data.entities.Superheroes
 import com.programacion.dispositivosmoviles.databinding.MarvelCharactersBinding
 import com.programacion.dispositivosmoviles.logic.validator.Marvel
+import com.squareup.picasso.Picasso
 
 class MarvelAdapters(private val dataSet: List<Superheroes>) : RecyclerView.Adapter<MarvelAdapters.MarvelViewHolder>(){
 
@@ -16,10 +18,13 @@ class MarvelAdapters(private val dataSet: List<Superheroes>) : RecyclerView.Adap
         private val binding: MarvelCharactersBinding = MarvelCharactersBinding.bind(view)
 
         fun render(item: Superheroes){
-
             binding.txtName.text = item.nombre
             binding.txtComic.text = item.comic
+            Picasso.get().load(item.imagen).into(binding.imageView)
 
+            binding.imageView.setOnClickListener{
+                Snackbar.make(binding.imageView,item.nombre, Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 

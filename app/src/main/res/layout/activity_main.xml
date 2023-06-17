@@ -166,6 +166,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/light_grey"
+        android:inputType="textPassword"
         android:hint="* * * * * * * * * * *"
         android:textColorHint="@color/black"
         android:textSize="16sp"
