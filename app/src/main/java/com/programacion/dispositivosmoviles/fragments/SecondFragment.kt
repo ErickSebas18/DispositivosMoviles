@@ -1,5 +1,6 @@
 package com.programacion.dispositivosmoviles.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.programacion.dispositivosmoviles.DetailsMarvelItem
+import com.programacion.dispositivosmoviles.MainActivity
 import com.programacion.dispositivosmoviles.R
 import com.programacion.dispositivosmoviles.adapters.MarvelAdapters
 import com.programacion.dispositivosmoviles.data.entities.Superheroes
@@ -32,11 +35,25 @@ class SecondFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val rvAdapter = MarvelAdapters(Marvel().returnMarvelChar())
+        binding.rvSwipe.setOnRefreshListener {
+            chargeDataRv()
+            binding.rvSwipe.isRefreshing = false
+        }
+    }
+
+    fun sendMarvelItems(item: Superheroes) {
+        val i = Intent(requireActivity(), DetailsMarvelItem::class.java)
+        i.putExtra("name", item)
+        startActivity(i)
+    }
+
+    fun chargeDataRv() {
+        val rvAdapter = MarvelAdapters(Marvel().returnMarvelChar()) { sendMarvelItems(it) }
 
         val rvMarvel = binding.rvMarvelChars
 
         rvMarvel.adapter = rvAdapter
-        rvMarvel.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
+        rvMarvel.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
     }
 }

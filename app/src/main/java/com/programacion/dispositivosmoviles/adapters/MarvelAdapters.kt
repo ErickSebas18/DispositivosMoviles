@@ -11,19 +11,25 @@ import com.programacion.dispositivosmoviles.databinding.MarvelCharactersBinding
 import com.programacion.dispositivosmoviles.logic.validator.Marvel
 import com.squareup.picasso.Picasso
 
-class MarvelAdapters(private val dataSet: List<Superheroes>) : RecyclerView.Adapter<MarvelAdapters.MarvelViewHolder>(){
+class MarvelAdapters(
+    private val dataSet: List<Superheroes>,
+    private var fnClick: (Superheroes) -> Unit
+) :
+    RecyclerView.Adapter<MarvelAdapters.MarvelViewHolder>() {
 
-    class MarvelViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class MarvelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding: MarvelCharactersBinding = MarvelCharactersBinding.bind(view)
 
-        fun render(item: Superheroes){
+        fun render(item: Superheroes, fnClick: (Superheroes) -> Unit) {
             binding.txtName.text = item.nombre
             binding.txtComic.text = item.comic
             Picasso.get().load(item.imagen).into(binding.imageView)
 
-            binding.imageView.setOnClickListener{
-                Snackbar.make(binding.imageView,item.nombre, Snackbar.LENGTH_SHORT).show()
+
+            binding.imageView.setOnClickListener {
+                fnClick(item)
+                //Snackbar.make(binding.imageView, item.nombre, Snackbar.LENGTH_SHORT).show()
             }
         }
     }
@@ -37,7 +43,7 @@ class MarvelAdapters(private val dataSet: List<Superheroes>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: MarvelAdapters.MarvelViewHolder, position: Int) {
-        holder.render(dataSet[position])
+        holder.render(dataSet[position], fnClick)
     }
 
     override fun getItemCount(): Int = dataSet.size
