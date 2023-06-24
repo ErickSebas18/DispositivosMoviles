@@ -26,7 +26,6 @@ class MarvelAdapters(
             binding.txtComic.text = item.comic
             Picasso.get().load(item.imagen).into(binding.imageView)
 
-
             binding.imageView.setOnClickListener {
                 fnClick(item)
                 //Snackbar.make(binding.imageView, item.nombre, Snackbar.LENGTH_SHORT).show()

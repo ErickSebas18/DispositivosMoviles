@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tomate_claro"
+    android:background="@color/white"
     tools:context=".fragments.SecondFragment">
 
 
@@ -12,9 +12,10 @@
         android:id="@+id/cardView"
         android:layout_width="350dp"
         android:layout_height="290dp"
-        android:background="#F07E34"
+        android:background="#E34027"
+        android:layout_marginRight="20dp"
         app:cardCornerRadius="40dp"
-        app:cardElevation="10dp"
+        app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.59"
@@ -26,9 +27,9 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="251dp"
-            android:background="#F07E34"
-            android:src="@drawable/foodie" />
+            android:layout_height="255dp"
+            android:background="#F81F1F "
+            android:src="@drawable/descarga" />
 
         <TextView
             android:layout_width="match_parent"
@@ -37,7 +38,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="0dp"
             android:fontFamily="@font/audiowide"
-            android:text="Mi Comida Favorita"
+            android:text="Marvel Comics"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30dp"
@@ -62,7 +63,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMarvelChars"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>

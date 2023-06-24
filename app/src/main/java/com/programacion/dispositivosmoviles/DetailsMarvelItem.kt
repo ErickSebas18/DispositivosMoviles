@@ -30,6 +30,7 @@ class DetailsMarvelItem : AppCompatActivity() {
         if (item !== null){
             binding.txtName.text= item.nombre
             Picasso.get().load(item.imagen).into(binding.imgMarvel)
+            binding.txtComic.text = item.comic
         }
     }
 }

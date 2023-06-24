@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/txtWelcome"
         style="@style/textTitle"
         android:layout_width="320dp"
@@ -17,16 +17,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <FrameLayout
         android:id="@+id/container"
-        android:layout_width="410dp"
-        android:layout_height="580dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="414dp"
+        android:layout_height="647dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

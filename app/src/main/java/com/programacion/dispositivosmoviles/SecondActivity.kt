@@ -29,7 +29,7 @@ class SecondActivity : AppCompatActivity() {
             name = it?.getString("var1")!!
         }
         Log.d("UCE", "Hola ${name}")
-        binding.txtWelcome.text = "Bienvenido " + name
+        //binding.txtWelcome.text = "Bienvenido " + name
         initClass()
 
         FragmentsManager().add(supportFragmentManager,binding.container.id,FirstFragment())

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#E34027"
     tools:context=".DetailsMarvelItem">
 
     <TextView
@@ -12,17 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="142dp"
         android:gravity="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-
-        />
-
+        android:textSize="25dp"
+        android:fontFamily="@font/audiowide"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgMarvel"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
-        />
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"/>
+
+    <TextView
+        android:id="@+id/txtComic"
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:fontFamily="@font/audiowide"
+        android:textStyle="bold" />
 
 </LinearLayout>
