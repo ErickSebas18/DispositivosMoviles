@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.programacion.dispositivosmoviles.DetailsMarvelItem
@@ -18,6 +19,10 @@ import com.programacion.dispositivosmoviles.adapters.MarvelAdapters
 import com.programacion.dispositivosmoviles.data.entities.Superheroes
 import com.programacion.dispositivosmoviles.databinding.FragmentSecondBinding
 import com.programacion.dispositivosmoviles.logic.validator.Marvel
+import com.programacion.dispositivosmoviles.logic.validator.jikanLogic.JikanAnimesLogic
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SecondFragment : Fragment() {
 
@@ -48,12 +53,17 @@ class SecondFragment : Fragment() {
     }
 
     fun chargeDataRv() {
-        val rvAdapter = MarvelAdapters(Marvel().returnMarvelChar()) { sendMarvelItems(it) }
+        lifecycleScope.launch() {
+            val rvAdapter =
+                MarvelAdapters(JikanAnimesLogic().getAllAnimes()) { sendMarvelItems(it) }
+            withContext(Dispatchers.Main) {
+                with(binding.rvMarvelChars) {
+                    this.adapter = rvAdapter
+                    this.layoutManager =
+                        LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+                }
+            }
+        }
 
-        val rvMarvel = binding.rvMarvelChars
-
-        rvMarvel.adapter = rvAdapter
-        rvMarvel.layoutManager =
-            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
     }
 }
