@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.speech.RecognizerIntent
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult.*
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +30,11 @@ import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsStatusCodes
 import com.google.android.gms.location.Priority
 import com.google.android.gms.location.SettingsClient
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.programacion.dispositivosmoviles.R
 import com.programacion.dispositivosmoviles.databinding.ActivityMainBinding
 import com.programacion.dispositivosmoviles.logic.validator.LoginValidator
@@ -58,8 +63,73 @@ class MainActivity : AppCompatActivity() {
     private lateinit var client : SettingsClient
     private lateinit var locationSettingsRequest : LocationSettingsRequest
 
+    private lateinit var auth : FirebaseAuth
+    private val TAG = "UCE"
 
     private var currentLocation: Location? = null
+
+    private fun createAccount(email: String, password: String) {
+        // [START create_user_with_email]
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success")
+                    val user = auth.currentUser
+                    //updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        baseContext,
+                        "Authentication failed.",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                    //updateUI(null)
+                }
+            }
+        // [END create_user_with_email]
+    }
+
+    private fun recoveryPasswordWithEmail(email:String){
+        auth.sendPasswordResetEmail(email).addOnCompleteListener {task ->
+            if(task.isSuccessful){
+                Toast.makeText(
+                    this,
+                    "Correo de recuperacion enviado",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                MaterialAlertDialogBuilder(this).apply {
+                    setTitle("Alerta")
+                    setMessage("Correo enviado")
+                    setCancelable(true)
+                }.show()
+            }
+        }
+    }
+    private fun signIn(email: String, password: String) {
+        // [START sign_in_with_email]
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithEmail:success")
+                    val user = auth.currentUser
+                    //updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        baseContext,
+                        "Authentication failed.",
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                    //updateUI(null)
+                }
+            }
+        // [END sign_in_with_email]
+    }
 
     @SuppressLint("MissingPermission")
     private val locationContract =
@@ -232,6 +302,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
+
+        binding.btnIngreso.setOnClickListener{
+            signIn(binding.name.text.toString(),binding.pass.text.toString())
+        }
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         locationRequest = LocationRequest.Builder(
@@ -269,10 +345,12 @@ class MainActivity : AppCompatActivity() {
         val db = DispositivosMoviles.getDBInstance()
     }
 
+
+
     @SuppressLint("MissingPermission")
     private fun initClass() {
 
-        binding.btnIngreso.setOnClickListener {
+       /* binding.btnIngreso.setOnClickListener {
             val check = LoginValidator().checkLogin(
                 binding.name.text.toString(),
                 binding.pass.text.toString()
@@ -303,7 +381,7 @@ class MainActivity : AppCompatActivity() {
                     .setTextColor(getColor(R.color.red))
                     .show()
             }
-        }
+        }*/
 
 
         binding.btnLoginTwitter.setOnClickListener {
