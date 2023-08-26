@@ -34,9 +34,7 @@ class MarvelAdapter(
             itemView.setOnClickListener {
                 fnClick(item)
             }
-            binding.btnSave.setOnContextClickListener {
-                fnSave(item)
-            }
+
         }
 
 

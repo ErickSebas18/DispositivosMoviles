@@ -76,6 +76,11 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
+                    Toast.makeText(
+                        baseContext,
+                        "Acceso concedido",
+                        Toast.LENGTH_LONG
+                    ).show()
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
                     startActivity(intent)
