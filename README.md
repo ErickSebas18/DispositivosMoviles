@@ -56,7 +56,7 @@ Proyecto Final Individual
  ---
  #Resultados
 
-![Login](https://github.com/ErickSebas18/DispositivosMoviles/blob/proyecto/assets/Detalle.png)
+![Login](https://github.com/ErickSebas18/DispositivosMoviles/blob/proyecto/assets/PaginaInicio.png)
 ![Registro](https://github.com/ErickSebas18/DispositivosMoviles/blob/proyecto/assets/Registro.png)
 ![Jikan](https://github.com/ErickSebas18/DispositivosMoviles/blob/proyecto/assets/Jikan.png)
 ![Marvel](https://github.com/ErickSebas18/DispositivosMoviles/blob/proyecto/assets/Marvel.png)
