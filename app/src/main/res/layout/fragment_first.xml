@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:windowSoftInputMode="adjustResize"
+    android:background="@color/backgroundblue"
     tools:context=".ui.fragments.FirstFragment">
 
     <androidx.cardview.widget.CardView
@@ -12,85 +13,79 @@
         android:layout_width="250dp"
         android:layout_height="202dp"
         android:layout_margin="35dp"
-        android:backgroundTint="@color/red"
-        android:elevation="10dp"
+        app:cardBackgroundColor="@color/red"
+        app:cardElevation="10dp"
         app:cardCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/ctnCardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="JIKAN"
+                android:layout_marginBottom="15dp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:background="#333"
+                android:scaleType="centerCrop"
                 app:srcCompat="@drawable/animes" />
-
-
         </LinearLayout>
 
-
     </androidx.cardview.widget.CardView>
-
-
-    <!--    <Spinner-->
-    <!--        android:id="@+id/spinner"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="48dp"-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:layout_marginLeft="25dp"-->
-    <!--        android:layout_marginRight="25dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@+id/ctnMarvelChars"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/cardView">-->
-
-    <!--    </Spinner>-->
 
     <LinearLayout
         android:id="@+id/ctnMarvelChars"
         android:layout_width="321dp"
         android:layout_height="400dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
-
+        app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
             android:id="@+id/txtFilter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints=""
+            android:hint="Filter"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@color/white"
+            android:textColor="@android:color/white"
             android:textSize="14sp"
-            tools:ignore="LabelFor">
-
-        </EditText>
-
+            android:background="@drawable/edittext_bg"
+            android:padding="8dp"
+            android:drawablePadding="8dp"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/rvSwipe"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMarvelChars"
-                android:layout_width="327dp"
-                android:layout_height="300dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

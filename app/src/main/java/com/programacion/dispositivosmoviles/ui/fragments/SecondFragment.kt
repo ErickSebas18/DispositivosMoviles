@@ -79,13 +79,13 @@ class SecondFragment : Fragment() {
 
         val names = arrayListOf<String>("A", "B", "C", "D", "E")
 
-        val adapter1 = ArrayAdapter<String>(
+        /*val adapter1 = ArrayAdapter<String>(
             requireActivity(),
             R.layout.simple_spinner_item,
             names
         )
 
-        binding.spinner.adapter = adapter1
+        binding.spinner.adapter = adapter1*/
         chargeDataRV(5)
 
         binding.rvSwipe.setOnRefreshListener {

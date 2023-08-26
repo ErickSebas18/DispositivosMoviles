@@ -8,6 +8,7 @@ import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
+import android.provider.MediaStore
 import android.speech.RecognizerIntent
 import android.util.Log
 import android.widget.Toast
@@ -68,54 +69,16 @@ class MainActivity : AppCompatActivity() {
 
     private var currentLocation: Location? = null
 
-    private fun createAccount(email: String, password: String) {
-        // [START create_user_with_email]
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    //updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    //updateUI(null)
-                }
-            }
-        // [END create_user_with_email]
-    }
-
-    private fun recoveryPasswordWithEmail(email:String){
-        auth.sendPasswordResetEmail(email).addOnCompleteListener {task ->
-            if(task.isSuccessful){
-                Toast.makeText(
-                    this,
-                    "Correo de recuperacion enviado",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                MaterialAlertDialogBuilder(this).apply {
-                    setTitle("Alerta")
-                    setMessage("Correo enviado")
-                    setCancelable(true)
-                }.show()
-            }
-        }
-    }
     private fun signIn(email: String, password: String) {
         // [START sign_in_with_email]
+        val intent = Intent(this, SecondActivity::class.java)
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
+                    startActivity(intent)
                     //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
@@ -306,6 +269,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnIngreso.setOnClickListener{
             signIn(binding.name.text.toString(),binding.pass.text.toString())
+
         }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
@@ -350,7 +314,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     private fun initClass() {
 
-       /* binding.btnIngreso.setOnClickListener {
+      /* binding.btnIngreso.setOnClickListener {
             val check = LoginValidator().checkLogin(
                 binding.name.text.toString(),
                 binding.pass.text.toString()
@@ -383,53 +347,9 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
-
-        binding.btnLoginTwitter.setOnClickListener {
-            locationContract.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-
-            /* val intent = Intent(
-                 Intent.ACTION_VIEW,
-                 Uri.parse("https://twitter.com/?lang=es")
-             )*/
-
-            /*val intent = Intent(
-                Intent.ACTION_WEB_SEARCH
-            )
-            intent.setClassName(
-                "com.google.android.googlequicksearchbox",
-                "com.google.android.googlequicksearchbox.SearchActivity"
-            )
-            intent.putExtra(SearchManager.QUERY, "UCE")
-            startActivity(intent)*/
-            //https://api.whatsapp.com/send?phone=593&text=
-        }
-
-
-        binding.btnLoginFacebook.setOnClickListener {
-            /*val intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://es-la.facebook.com/")
-            )*/
-
-            //startActivity(intent)
-
-            /*val resIntent = Intent(this, ResultActivity::class.java)
-            appResultLocal.launch(resIntent)*/
-
-            val intentSpeech = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-            intentSpeech.putExtra(
-                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
-            )
-            intentSpeech.putExtra(
-                RecognizerIntent.EXTRA_LANGUAGE,
-                Locale.getDefault()
-            )
-            intentSpeech.putExtra(
-                RecognizerIntent.EXTRA_PROMPT,
-                "Habla Moreira"
-            )
-            speechToText.launch(intentSpeech)
+        binding.labelRegistro.setOnClickListener{
+            val intent =Intent(this, Registrarse::class.java)
+            startActivity(intent)
         }
     }
 

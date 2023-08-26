@@ -1,43 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff7d40"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="16dp"
+    android:background="@color/backgroundblue"
     tools:context=".ui.fragments.ThirdFragment">
 
+    <Button
+        android:id="@+id/btnApp1"
+        style="@style/AppButtonStyle"
+        android:text="Ir a Biometrico" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#00FFFFFF"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <Button
+        android:id="@+id/btnApp2"
+        style="@style/AppButtonStyle"
+        android:text="Ir a Camara" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/android" />
+    <Button
+        android:id="@+id/btnApp3"
+        style="@style/AppButtonStyle"
+        android:text="Ir a Notificacion" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_gravity="bottom|center"
-            android:layout_marginTop="224dp"
-            android:fontFamily="@font/carrois_gothic_sc"
-            android:text="@string/title_fragmentT"
-            android:textColor="@color/purple"
-            android:textSize="50sp"
-            android:textStyle="bold" />
-
-    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/btnApp4"
+        style="@style/AppButtonStyle"
+        android:text="Ver barra de Progreso" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
